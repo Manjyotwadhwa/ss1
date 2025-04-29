@@ -1,0 +1,91 @@
+1. Shell script to perform Arithmetic Operations
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter two numbers:"
+read a b
+
+echo "Addition: $((a + b))"
+echo "Subtraction: $((a - b))"
+echo "Multiplication: $((a * b))"
+echo "Division: $((a / b))"
+echo "Modulus: $((a % b))"
+2. Shell script for Simple Interest and Compound Interest
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter Principal, Rate (per annum), and Time (in years):"
+read p r t
+
+# Simple Interest
+si=$((p * r * t / 100))
+echo "Simple Interest = $si"
+
+# Compound Interest
+# Using bc for decimal calculation
+amount=$(echo "scale=2; $p * (1 + $r/100)^$t" | bc)
+ci=$(echo "scale=2; $amount - $p" | bc)
+echo "Compound Interest = $ci"
+Note: bc is installed by default on Ubuntu. It's used for decimal precision.
+
+3. Shell script to find the Largest among Three Numbers
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter three numbers:"
+read a b c
+
+if [ $a -ge $b ] && [ $a -ge $c ]; then
+  echo "$a is the largest"
+elif [ $b -ge $a ] && [ $b -ge $c ]; then
+  echo "$b is the largest"
+else
+  echo "$c is the largest"
+fi
+4. Shell script to check if Year is Leap Year or Not
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter a year:"
+read year
+
+if (( (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) )); then
+  echo "$year is a Leap Year"
+else
+  echo "$year is not a Leap Year"
+fi
+5. Shell script to convert Fahrenheit to Centigrade
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter temperature in Fahrenheit:"
+read f
+
+c=$(echo "scale=2; ( $f - 32 ) * 5 / 9" | bc)
+echo "$f Fahrenheit = $c Celsius"
+6. Shell script to find Area and Circumference of a Circle
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter radius of the circle:"
+read r
+
+area=$(echo "scale=2; 3.14 * $r * $r" | bc)
+circumference=$(echo "scale=2; 2 * 3.14 * $r" | bc)
+
+echo "Area = $area"
+echo "Circumference = $circumference"
+
+
