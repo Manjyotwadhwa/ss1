@@ -1,0 +1,54 @@
+a) grep - Number of characters, words, lines in a file
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter filename:"
+read file
+
+if [ -f "$file" ]; then
+  wc "$file"
+else
+  echo "File does not exist."
+fi
+(wc internally uses grep patterns.)
+
+b) egrep - List files of specific type (e.g., .txt files)
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Text files in current directory:"
+ls | egrep "\.txt$"
+c) sed - Replace all occurrences of a word
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter filename:"
+read file
+echo "Enter word to replace:"
+read old
+echo "Enter new word:"
+read new
+
+sed -i "s/$old/$new/g" "$file"
+
+echo "All occurrences of '$old' replaced with '$new'."
+(-i directly edits the file.)
+
+d) sed - Print duplicate lines
+bash
+Copy
+Edit
+#!/bin/bash
+
+echo "Enter filename:"
+read file
+
+sort "$file" | uniq -d
+(Using sort + uniq -d to find duplicates.)
+
